@@ -1,25 +1,115 @@
+/* ============================================================
+   ResearchOS — Design System & Global Styles
+   Inspired by Linear, Stripe, Vercel — dark, warm, editorial
+   ============================================================ */
+
 :root {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* ── Surfaces ─────────────────────────────────── */
+  --bg-base:       #08080c;
+  --bg-raised:     #101018;
+  --bg-surface:    #16161f;
+  --bg-overlay:    #1e1e2a;
+  --bg-hover:      #252535;
 
-  color-scheme: light dark;
-  color: #2d3748;
-  background-color: #f5f7fa;
+  /* ── Borders ──────────────────────────────────── */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default:rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.16);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  /* ── Text ─────────────────────────────────────── */
+  --text-primary:  #ededf0;
+  --text-secondary:#8a8a9a;
+  --text-muted:    #55556a;
+
+  /* ── Accent: Warm Amber ───────────────────────── */
+  --accent:        #e8a630;
+  --accent-muted:  #b8842a;
+  --accent-bg:     rgba(232, 166, 48, 0.08);
+  --accent-border: rgba(232, 166, 48, 0.25);
+
+  /* ── Semantic ─────────────────────────────────── */
+  --success:       #2dd4a8;
+  --success-bg:    rgba(45, 212, 168, 0.08);
+  --error:         #f06070;
+  --error-bg:      rgba(240, 96, 112, 0.08);
+  --info:          #60a0f0;
+  --info-bg:       rgba(96, 160, 240, 0.08);
+
+  /* ── Typography ───────────────────────────────── */
+  --font-sans:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif:    'DM Serif Display', Georgia, serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Spacing ──────────────────────────────────── */
+  --radius-sm:     6px;
+  --radius-md:     10px;
+  --radius-lg:     16px;
+  --radius-xl:     24px;
+
+  /* ── Shadows ──────────────────────────────────── */
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md:     0 4px 16px rgba(0,0,0,0.35);
+  --shadow-lg:     0 8px 32px rgba(0,0,0,0.45);
+  --shadow-glow:   0 0 40px rgba(232, 166, 48, 0.08);
+}
+
+/* ── Reset & Base ───────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
   min-height: 100vh;
-  scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #1a202c;
+/* Subtle noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+::selection {
+  background: rgba(232, 166, 48, 0.3);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
